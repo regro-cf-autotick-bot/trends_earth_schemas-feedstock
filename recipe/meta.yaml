@@ -10,21 +10,23 @@ source:
   sha256: f2ee884cab5bcebc2ccb6e985c3627b862749e0a26bdd9621d6b384a1b9fd55e
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
 
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - marshmallow >=3.18.0
     - marshmallow-dataclass ==8.5.10
     
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - te_schemas
 
